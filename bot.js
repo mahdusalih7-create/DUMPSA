@@ -2,7 +2,7 @@ const { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
 
 const API_URL = 'https://dumpsa-production.up.railway.app/api/dump';
-const TOKEN = 'MTQ3MjM1MTU5MjUwNTI4Mjc1OQ.Gtell4.W5o5OOtLxi9mZr9jikHgZE_eJeGHH0Y_Az9dL0';
+const TOKEN = 'MTQ3MjM1MTU5MjUwNTI4Mjc1OQ.GVOyd6.ikMeZ7zKJnUPyx9D8tkV8AFsvPcFAZinU-ahyA';
 
 const client = new Client({
     intents: [

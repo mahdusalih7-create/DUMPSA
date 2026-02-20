@@ -8,24 +8,34 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '50mb' }));
 
+// ✅ Root route لنجاح Healthcheck
+app.get('/', (req, res) => {
+    res.status(200).send('OK');
+});
+
+// ✅ Health endpoint
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// TEMP DIR
 const TEMP_DIR = path.join('/tmp', 'lua-dumper');
 if (!fs.existsSync(TEMP_DIR)) {
     fs.mkdirSync(TEMP_DIR, { recursive: true });
 }
 
+// Cleanup function
 function cleanupFiles(...files) {
     files.forEach(f => {
         if (f && fs.existsSync(f)) fs.unlink(f, () => {});
     });
 }
 
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
+// Dump endpoint
 app.post('/api/dump', async (req, res) => {
     const { code, options = {} } = req.body;
 
@@ -98,11 +108,20 @@ app.post('/api/dump', async (req, res) => {
     }
 });
 
+// Error middleware
 app.use((err, req, res, next) => {
     res.status(500).json({ success: false, error: 'Internal server error' });
 });
 
+// Start server
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
-    require('./bot.js');
+
+    // ✅ تشغيل البوت بأمان
+    try {
+        require('./bot.js');
+        console.log("Bot started successfully");
+    } catch (err) {
+        console.error("Bot failed to start:", err.message);
+    }
 });

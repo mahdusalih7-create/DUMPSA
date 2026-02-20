@@ -2,15 +2,13 @@ const { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
 
 const API_URL = 'https://dumpsa-production.up.railway.app/api/dump';
-const TOKEN = 'MTQ3MjM1MTU5MjUwNTI4Mjc1OQ.G29f07.5dcoQ4P_MTOMqtcZhNcVO8av4hytbYI6Gw0x8w';
+const TOKEN = 'MTQ3MjM1MTU5MjUwNTI4Mjc1OQ.Gtell4.W5o5OOtLxi9mZr9jikHgZE_eJeGHH0Y_Az9dL0';
 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ]
-});
+        GatewayIntentBits.MessageC
 
 client.once('ready', () => {
     console.log('✅ البوت شغال: ' + client.user.tag);

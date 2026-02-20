@@ -1,4 +1,4 @@
-Enterconst { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
 
 const API_URL = 'https://dumpsa-production.up.railway.app';

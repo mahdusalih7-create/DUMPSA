@@ -1,8 +1,8 @@
 Enterconst { Client, GatewayIntentBits, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
 
-const API_URL = 'https://رابطك.railway.app/api/dump';
-const TOKEN = 'التوكن_هنا';
+const API_URL = 'https://dumpsa-production.up.railway.app';
+const TOKEN = 'MTQ3MjM1MTU5MjUwNTI4Mjc1OQ.G29f07.5dcoQ4P_MTOMqtcZhNcVO8av4hytbYI6Gw0x8w';
 
 const client = new Client({
     intents: [
